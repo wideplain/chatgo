@@ -27,7 +27,7 @@ Websocketを利用したJavaカリキュラム用chatアプリです。
 | ------------- | ------- | ------------------------------ |
 | email         | String  | null: false, unique: true      |
 | password      | String  | null: false                    |
-| name          | String  | null: false, unique: true      |
+| username      | String  | null: false, unique: true      |
 | profile_photo | String  |                                |
 
 

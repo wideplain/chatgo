@@ -20,7 +20,7 @@
 */
 
 /* All */
-body {font-family: 'Bree Serif', sans-serif;}
+body {font-family: "Noto Sans Japanese", sans-serif;}
 
 /* User */
 .login--left_content {
@@ -37,6 +37,8 @@ body {font-family: 'Bree Serif', sans-serif;}
 
 a.app_name {
   color: white;
+  font-family: 'Bree Serif';
+
 }
 
 .login--left_content__message {
@@ -211,6 +213,7 @@ a.app_name {
 
 .message__text {
   word-wrap: break-word;
+  font-weight: 200;
 }
 
 /* index > messages > form */

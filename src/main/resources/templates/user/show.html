@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
+  <meta charset="UTF-8" th:remove="all" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
   <title>Hello WebSocket</title>
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-  <link rel="stylesheet" href="/css/normalize.min.css">
-  <link rel="stylesheet" href="/css/milligram.min.css">
-  <link rel="stylesheet" href="/css/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
+  <link rel="stylesheet" href="/css/normalize.min.css" />
+  <link rel="stylesheet" href="/css/milligram.min.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
 </head>
+
 
 <body>
   <div class="row">
@@ -20,7 +22,7 @@
             <h1 class="app_name"><a class="app_name" href="index.html">ChatGo</a></h1>
           </div>
           <div class="profile--left_content__message mobile_none">
-            <div class="profile__userphoto" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div>
+            <div class="profile__userphoto" style="background-image: url(/static/pic/default_profile.png)"></div>
             <h2 class="profile--name">Donald Trump</h2>
           </div>
       </div>

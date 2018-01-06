@@ -19,7 +19,7 @@ Websocketを利用したJavaカリキュラム用chatアプリです。
 | Column   | Type   | Options                        |
 | -------- | ------ | ------------------------------ |
 | user_id  | Long   | null: false, foreign_key: true |
-| group_id | Long   | null: false, foreign_key: true |
+| room_id  | Long   | null: false, foreign_key: true |
 | body     | String |                                |
 
 ## users table
@@ -41,4 +41,4 @@ Websocketを利用したJavaカリキュラム用chatアプリです。
 | Column   | Type | Options                        |
 | -------- | ---- | ------------------------------ |
 | user_id  | Long | null: false, foreign_key: true |
-| group_id | Long | null: false, foreign_key: true |
+| room_id  | Long | null: false, foreign_key: true |

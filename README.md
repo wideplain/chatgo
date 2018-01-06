@@ -1,4 +1,4 @@
-# java_chat_curriculum
+# ChatGo
 Websocketを利用したJavaカリキュラム用chatアプリです。
 
 ## websocketを利用したチャットアプリの要望

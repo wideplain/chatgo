@@ -1,4 +1,5 @@
 # ChatGo
+![トップページ](https://i.gyazo.com/3249d69cee6083c2f79bdb928eb69396.png)
 Websocketを利用したJavaカリキュラム用chatアプリです。
 
 ## websocketを利用したチャットアプリの要望
@@ -30,7 +31,7 @@ Websocketを利用したJavaカリキュラム用chatアプリです。
 | profile_photo | String  |                                |
 
 
-## groups table
+## rooms table
 | Column | Type   | Options                   |
 | ------ | ------ | ------------------------- |
 | name   | String | null: false, unique: true |

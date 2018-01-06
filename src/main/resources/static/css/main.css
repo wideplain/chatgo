@@ -1,0 +1,451 @@
+@charset "UTF-8";
+
+/*
+  目次
+
+  All
+
+  INDEX
+  index > menu
+  index > messages
+  index > messages > form
+
+  User > form
+  User > profile
+  Radio
+  Checkbox
+
+  メディアクエリ
+
+*/
+
+/* All */
+body {font-family: 'Bree Serif', sans-serif;}
+
+/* User */
+.login--left_content {
+  background-image: linear-gradient(-235deg, #341FD1, #F00004);
+  width: 50vw;
+  min-height: 100vh;
+  position: fixed;
+}
+
+.start_header {
+  margin-left: 30px;
+  padding-top: 1vh;
+}
+
+a.app_name {
+  color: white;
+}
+
+.login--left_content__message {
+  margin-left: 5vw;
+  margin-right: 30px;
+  clear: both;
+  margin-top: 25vh;
+}
+
+.login--left_content__message h2 {
+  font-weight: bold;
+  color: white;
+  font-size: 350%;
+  clear: both;
+}
+
+.login--left_content__message p {
+  color: white;
+  padding-top: 1vh;
+  font-size: 150%;
+  margin-right: 15vw;
+}
+
+.login_form {
+  padding-top: 32vh;
+  margin-left: 30px;
+  margin-right: 5vw;
+}
+
+/* INDEX */
+
+/* index > menu */
+.container {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.menu {
+  min-width: 200px;
+
+}
+
+.menu-include {
+  padding-right: 5px;
+  height: 100vh;
+  width: 100%;
+  border-right: solid 0.5px #f5f5f5;
+  padding-top: 10px;
+    position: relative;
+}
+
+.menu__header {
+  border-bottom: solid 0.5px #f5f5f5;
+}
+
+.icon-menu {
+  border-top: solid 0.5px #f5f5f5;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+  align-items: center; /* 縦方向中央揃え */
+  height: 45px;
+}
+
+.menu__rooms--head {
+  height: 30px;
+  padding-top: 5px;
+  background-color: rgba(300, 300, 300, 0.9);
+  position: absolute;
+  width: 100%;
+}
+
+.left__icon {
+  float: left;
+}
+.right__icon {
+  float: right;
+}
+
+.menu__rooms {
+  overflow: scroll;
+  height: calc(100vh - 155px);
+  font-size: 90%;
+}
+
+.menu__rooms--list {
+  padding-top: 35px;
+}
+
+
+
+
+/* index > messages */
+.messages {
+  height: calc(100vh - 50px);
+  position: relative;
+}
+
+.messages--header{
+  height: 50px;
+  padding: 10px;
+  border-bottom: solid 0.5px #f5f5f5;
+  position: absolute;
+  margin:0 auto;
+  width: 100%;
+  background-color: rgba(300, 300, 300, 0.9);
+  z-index: 100;
+}
+
+.messages--header__right {
+  float: right;
+  display: flex;
+  padding: 10px;
+  background-color: rgba(300,300,300,0.8);
+  border: solid 0.5px #f5f5f5;
+}
+
+.mobile-menu__label {
+  margin-bottom:0;
+  height: 24px;
+}
+
+.input:checked ~ #mobile_none div{
+  display: block;
+}
+
+.message--form{
+  height: 50px;
+}
+
+.messages--content {
+  padding-top: 70px;
+  z-index: -100;
+}
+
+.messages--box{
+  overflow: scroll;
+  box-sizing: border-box;
+  height: calc(100vh - 50px);
+}
+
+.message {
+  padding: 20px 5px 5px 5px;
+  clear: left;
+  position: relative;
+}
+
+.message__userphoto {
+  width:60px;
+  height:60px;
+  border-radius: 80% 30% 50% 50%/50%;
+  box-shadow: 0px 0px 10px #ccc;
+  background-size:contain;
+  float: left;
+  margin-top: 5px;
+}
+
+.message--content__container {
+  padding-left: 10px;
+  overflow: hidden;
+}
+
+.message__username {
+  float: left;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.message__timestamp {
+  font-size: 80%;
+  padding: 3px
+}
+
+.message__text {
+  word-wrap: break-word;
+}
+
+/* index > messages > form */
+
+.message--form__layout {
+  padding-top: 1vh;
+  border-top: solid 0.5px #9b4dca;
+}
+
+.submit_button {
+  text-align:center
+}
+
+
+.bottom {
+  margin-bottom: 0;
+}
+
+/* user > form */
+
+.button-small {
+  font-size: .8rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  padding: 0 1.5rem;
+}
+
+.new-group {
+  float: right;
+}
+
+.search-form {
+  clear: both;
+}
+
+.search_result {
+  overflow: scroll;
+  height: 45vh;
+}
+
+#name_checkbox {
+  margin-bottom: 0;
+}
+
+/* User > profile */
+
+.profile--left_content__message {
+  margin-left: 5vw;
+  margin-right: 30px;
+  clear: both;
+}
+
+.profile--left_content__message h2 {
+  font-weight: bold;
+  color: white;
+  font-size: 350%;
+  clear: both;
+}
+
+.profile--left_content__message p {
+  color: white;
+  padding-top: 1vh;
+  font-size: 150%;
+  margin-right: 15vw;
+}
+
+
+.profile__userphoto {
+  width:20vw;
+  height:20vw;
+  border-radius: 80% 30% 50% 50%/50%;
+  box-shadow: 0px 0px 10px #ccc;
+  background-size:contain;
+  float: left;
+  margin-top: 15vh;
+}
+
+h2.profile--name {
+  font-weight: normal;
+  color: white;
+  font-size: 300%;
+  clear: both;
+}
+
+.profile__userphoto--right {
+  width:50vw;
+  height:50vw;
+  border-radius: 80% 30% 50% 50%/50%;
+  box-shadow: 0px 0px 10px #ccc;
+  background-size:contain;
+  margin:0 auto;
+}
+/* User > profile > edit */
+
+label.file_photo {
+  color: white;
+  background-color: #9b4dca;
+  padding: 6px;
+  border-radius: 5px;
+  margin: 20px 0 20px 0;
+  font-size: 80%;
+  text-align: center;
+}
+
+label.file_photo:hover {
+  background-color: #606c76;
+}
+
+
+/* Radio ---------------------------------------------------*/
+input[type="radio"] {
+  display: none;
+  /*checked時の見た目*/
+}
+input[type="radio"] + label {
+  display: block;
+  cursor: pointer;
+  /*通常時の見た目*/
+  /*hover時の見た目*/
+}
+input[type="radio"] + label::before {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  content: "";
+  border-radius: 10px;
+  vertical-align: middle;
+  border: 2px solid #dddddd;
+  background-color: #f0f0f0;
+  margin: 2px 5px 0 0;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+input[type="radio"] + label:hover {
+  color: #808080;
+}
+input[type="radio"] + label:hover::before {
+  background-color: #fff;
+}
+input[type="radio"]:checked + label {
+  color: #9b4dca;
+  cursor: default;
+}
+input[type="radio"]:checked + label::before {
+  border-color: #9b4dca !important;
+  background-color: #9b4dca !important;
+  box-shadow: inset 0 0 0 7px #fff;
+}
+
+/* Checkbox ------------------------------------------------*/
+input[type="checkbox"] {
+  display: none;
+  /*checked時の見た目*/
+}
+input[type="checkbox"] + label {
+  display: block;
+  cursor: pointer;
+  margin: 0px;
+  /*通常時の見た目*/
+  /*hover時の見た目*/
+}
+input[type="checkbox"] + label::before {
+  width: 20px;
+  height: 20px;
+  line-height: 10px;
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  content: "\2713";
+  color: transparent;
+  padding: 0;
+  border-radius: 5px;
+  border: 2px solid #dddddd;
+  background: #f0f0f0;
+  margin: -2px 5px 0 0;
+  -webkit-transition: .1s;
+  transition: .1s;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input[type="checkbox"] + label:hover {
+  color: #808080;
+}
+input[type="checkbox"] + label:hover::before {
+  background-color: #fff;
+}
+input[type="checkbox"]:checked + label {
+  color: #9b4dca;
+}
+input[type="checkbox"]:checked + label::before {
+  font-size: 25px;
+  background: #fff !important;
+  border-color: #9b4dca !important;
+  color: #9b4dca !important;
+}
+
+
+/* メディアクエリ */
+
+@media screen and (min-width: 640px) {
+  .pc_none {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .mobile_none {
+    display: none;
+  }
+
+  .mobile_hidden {
+    overflow: hidden;
+  }
+
+  /* User */
+  h1.app_name {
+  color: black;
+  }
+  .login_form {
+    padding-top: 3vh;
+  }
+
+  .login--right_content {
+    background: no-repeat;
+    background-size: 10vh 100%;
+    background:linear-gradient(-235deg, #341FD1, #F00004) no-repeat;
+    background-size:100% 3px;
+
+    }
+
+    h2.profile--name {
+      margin: 0 auto;
+    }
+
+  }
+}

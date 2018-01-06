@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello WebSocket</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="normalize.min.css">
+  <link rel="stylesheet" href="milligram.min.css">
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column column-20 menu">
+        <div class="menu-include mobile_none" id="sub-menu">
+          <div class="menu__header">
+            <h3>User</h3>
+            <div class="icon-menu">メニュー｜<a href="show.html"><i class="material-icons">account_circle</i></a><a href="signup.html"><i class="material-icons">lock_outline</i></a></div>
+          </div>
+          <div class="menu__rooms">
+            <div class="menu__rooms--head">
+              <p class="left__icon">ルーム</p><p class="right__icon"><a href="search.html"><i class="material-icons">add_circle_outline</i></a></p>
+            </div>
+            <div class="menu__rooms--list" id="menu__rooms">
+              <ul>
+                <li>チャットルーム１</li>
+                <li>チャットルーム2あああああああああああああああああ</li>
+                <li>チャットルーム2あああああああああああああああああ</li>
+                <li>チャットルーム3あああ</li>
+                <li>チャットルーム4ああああああ</li>
+                <li>チャットルーム5ああああ</li>
+                <li>チャットルーム6あああああああ</li>
+                <li>チャットルーム7ああああああああああああああ</li>
+                <li>チャットルーム8あああああああああああああ</li>
+                <li>チャットルーム9あああ</li>
+                <li>チャットルーム</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <form class="bottom">
+              <fieldset class="bottom">
+                <input class="bottom" type="text" placeholder="&#x1F50D; ルーム検索" id="nameField">
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="messages">
+          <div class="messages--box">
+            <div class="messages--header">
+              <h3><i class="material-icons">group</i>talkroom</h3>
+              <div class="messages--header__right pc_none">
+                <a href="show.html"><i class="material-icons">account_circle</i></a><a href="search.html"><i class="material-icons">question_answer</i></a><a href="signup.html"><i class="material-icons">lock_outline</i></a>
+              </div>
+            </div>
+            <div class="messages--content">
+              <div class="message">
+                <div class="message__userphoto--container">
+                  <div class="message__userphoto" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div></div>
+                  <div class="message--content__container"><div class="message__username">username</div>
+                  <div class="message__timestamp">2019/01/10</div>
+                  <div class="message__text"><p>Hoping today will be the most awesome day for you.</p></div>
+                </div>
+              </div>
+              <div class="message">
+                <div class="message__userphoto" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div>
+                <div class="message--content__container"><div class="message__username">username</div>
+                <div class="message__timestamp">2019/01/10</div>
+                <div class="message__text"><p>The United Nations Security Council just voted 15-0 in favor of additional Sanctions on North Korea. The World wants Peace, not Death!</p></div>
+              </div>
+            </div>
+            <div class="message">
+              <div class="message__userphoto" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div>
+              <div class="message--content__container"><div class="message__username">username</div>
+              <div class="message__timestamp">2019/01/10</div>
+              <div class="message__text"><p>Congressman Ron DeSantis is a brilliant young leader, Yale and then Harvard Law, who would make a GREAT Governor of Florida. He loves our Country and is a true FIGHTER!</p></div>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message__userphoto" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div>
+            <div class="message--content__container"><div class="message__username">username</div>
+            <div class="message__timestamp">2019/01/10</div>
+            <div class="message__text"><p>Hoping today will be the most awesome day for you.</p></div>
+          </div>
+        </div>
+        <div class="message">
+          <div class="message__userphoto" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div>
+          <div class="message--content__container"><div class="message__username">username</div>
+          <div class="message__timestamp">2019/01/10</div>
+          <div class="message__text"><p>“The President has accomplished some absolutely historic things during this past year.” Thank you Charlie Kirk of Turning Points USA. Sadly, the Fake Mainstream Media will NEVER talk about our accomplishments in their end of year reviews. We are compiling a long & beautiful list.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="message--form">
+  <form class="bottom">
+    <fieldset class="bottom">
+      <div class="row message--form__layout">
+        <div class="column"><input type="text" placeholder="メッセージを入力" id="nameField" class="bottom"></div>
+        <div class="mobile_none"><div class="submit_button"><input class="button-primary bottom" type="submit" value="送信"></div></div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -23,7 +23,7 @@
           </div>
           <div class="login--left_content__message mobile_none">
             <h2>ルーム作成</h2>
-            <p>チャットルームの新しく作ります</p>
+            <p>チャットルームを新しく作ります</p>
           </div>
       </div>
     </div>
@@ -35,13 +35,14 @@
             <h5>チャットルームを新しく作ります</h5>
           </div>
           <div class="search-form">
-            <form>
+            <form th:action="@{/rooms/new}" method="post" th:object="${roomForm}">
               <fieldset>
                 <div class="row message--form__layout" style="border-top: none;">
-                  <div class="column"><input type="text" placeholder="ルーム名を入力" id="nameField"></div>
-                  <div class="submit_button"><input class="button-primary" type="submit" value="作成" style="width: 100%;"></div>
+                  <div class="column"><input type="text" placeholder="ルーム名を入力" id="nameField" th:feild="*{name}" th:errorclass="error-field" name="name" /></div>
+                  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="help-block">error!</span>
+                  <div class="submit_button"><input class="button-primary" type="submit" value="作成" style="width: 100%;" /></div>
                 </div>
-                <input class="bottom" type="text" placeholder="&#x1F50D; 加入ユーザー名を検索" id="roomField">
+                <input class="bottom" type="text" placeholder="&#x1F50D; 加入ユーザー名を検索" id="roomField" />
               </fieldset>
             </form>
           </div>
@@ -52,38 +53,12 @@
                   <td>
                     <input type="checkbox" id="name_checkbox1" /><label for="name_checkbox1" class="bottom">name1
                     </label>
-                </td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" id="name_checkbox2" /><label for="name_checkbox2" class="bottom">name2
-                    </label>
-                  </td>
-                </tr>
-                  <td><input type="checkbox" id="name_checkbox3" /><label for="name_checkbox3" class="bottom">name3
-                    </label>
                   </td>
                 </tr>
                 <tr>
-                  <td><input type="checkbox" id="name_checkbox4" /><label for="name_checkbox4" class="bottom">name4
-                    </label>
-                  </td>
-                </tr>
-                  <td><input type="checkbox" id="name_checkbox5" /><label for="name_checkbox5" class="bottom">name5
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" id="name_checkbox6" /><label for="name_checkbox6" class="bottom">name6
-                    </label>
-                  </td>
-                </tr>
-                  <td><input type="checkbox" id="name_checkbox7" /><label for="name_checkbox7" class="bottom">name
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" id="name_checkbox8" /><label for="name_checkbox8" class="bottom">name9
-                    </label>
+                  <td>
+                    <input type="checkbox" id="name_checkbox2" /><label for="name_checkbox2" class="bottom">name1
+                  </label>
                   </td>
                 </tr>
               </tbody>

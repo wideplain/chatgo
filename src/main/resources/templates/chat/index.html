@@ -30,17 +30,7 @@
             </div>
             <div class="menu__rooms--list" id="menu__rooms">
               <ul>
-                <li>チャットルーム１</li>
-                <li>チャットルーム2あああああああああああああああああ</li>
-                <li>チャットルーム2あああああああああああああああああ</li>
-                <li>チャットルーム3あああ</li>
-                <li>チャットルーム4ああああああ</li>
-                <li>チャットルーム5ああああ</li>
-                <li>チャットルーム6あああああああ</li>
-                <li>チャットルーム7ああああああああああああああ</li>
-                <li>チャットルーム8あああああああああああああ</li>
-                <li>チャットルーム9あああ</li>
-                <li>チャットルーム</li>
+                <li th:each="room : ${rooms}" class="room__link"><a href="/rooms/1" th:href="@{'/rooms/' + ${room.id}}" th:text="${room.name}" title="チャットルーム" style="color: #606c76;">ルーム</a></li>
               </ul>
             </div>
           </div>

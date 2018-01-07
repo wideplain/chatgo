@@ -128,8 +128,6 @@ a.app_name {
 }
 
 
-
-
 /* index > messages */
 .messages {
   height: calc(100vh - 50px);
@@ -451,4 +449,3 @@ input[type="checkbox"]:checked + label::before {
     }
 
   }
-}

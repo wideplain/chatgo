@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RoomController {
 
+    @Autowired
+    private RoomService roomService;
+
     @ModelAttribute
     RoomForm setUpForm() {
         return new RoomForm();
@@ -29,8 +32,6 @@ public class RoomController {
         return "room/new";
     }
 
-    @Autowired
-    private RoomService roomService;
 
     @PostMapping("/rooms/new")
     public String createRoom(@Validated RoomForm form, BindingResult result, Model model) {

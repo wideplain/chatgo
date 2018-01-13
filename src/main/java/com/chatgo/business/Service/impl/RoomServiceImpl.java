@@ -24,12 +24,14 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public void save(Room room) {
+        roomRepository.save(room);
+    }
+
+    @Override
     public Page<Room> findAll(Pageable pageable){
         return roomRepository.findAll(pageable);
     }
 
-    @Override
-    public void save(Room room) {
-        roomRepository.save(room);
-    }
+
 }

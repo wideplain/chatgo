@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "rooms")
-public class Room {
+public class Room extends TimestampEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,9 +12,6 @@ public class Room {
 
     private String name;
 
-
-    public Room() {
-    }
 
     public Long getId() {
         return id;
@@ -31,4 +28,5 @@ public class Room {
     public void setName(String name) {
         this.name = name;
     }
+
 }

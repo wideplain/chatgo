@@ -12,6 +12,10 @@ public class Room extends TimestampEntity {
 
     private String name;
 
+    @Column(updatable=false)
+    private Long createdBy;
+
+    private Long updatedBy;
 
     public Long getId() {
         return id;
@@ -29,4 +33,19 @@ public class Room extends TimestampEntity {
         this.name = name;
     }
 
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 }

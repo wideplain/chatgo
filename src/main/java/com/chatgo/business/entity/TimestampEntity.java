@@ -1,4 +1,4 @@
-package com.chatgo.business.entitiy;
+package com.chatgo.business.entity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;

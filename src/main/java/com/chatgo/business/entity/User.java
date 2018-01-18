@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends TimestampEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

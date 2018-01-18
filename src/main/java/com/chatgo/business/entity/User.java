@@ -1,12 +1,15 @@
 package com.chatgo.business.entity;
 
+
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User extends TimestampEntity {
+public class User {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false, unique = true)
@@ -18,7 +21,6 @@ public class User extends TimestampEntity {
     @Column(nullable = false)
     private String nickname;
 
-    private String profileImage;
 
     public Long getId() {
         return id;
@@ -51,13 +53,4 @@ public class User extends TimestampEntity {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
-
-    public String getProfileImage() {
-        return profileImage;
-    }
-
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
-    }
 }
-

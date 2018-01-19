@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" th:remove="all" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta charset="UTF-8" th:remove="all"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
   <title>Hello WebSocket</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
   <link rel="stylesheet" href="/css/normalize.min.css" />
@@ -21,7 +22,18 @@
         <div class="menu-include mobile_none" id="sub-menu">
           <div class="menu__header">
             <h3>User</h3>
-            <div class="icon-menu">メニュー｜<a href="show.html"><i class="material-icons">account_circle</i></a><a href="signup.html"><i class="material-icons">lock_outline</i></a></div>
+            <div th:if="${loginUser == null}" class="entry_button">
+              <div class="icon-menu">メニュー｜<a href="show.html"><i class="material-icons">account_circle</i></a><a th:href="@{/login}"><i class="material-icons">lock_outline</i></a></div>
+            </div>
+            <div th:if="${loginUser != null}" class="entry_button">
+              <div class="icon-menu">メニュー｜<a href="show.html"><i class="material-icons">account_circle</i></a>
+                <form th:action="@{/logout}" method="POST" name="logout" style="padding-top: 27px;">
+                  <a href="javascript:logout.submit()">
+                    <i class="material-icons">lock_outline</i>
+                  </a>
+                </form>
+              </div>
+            </div>
           </div>
           <div class="menu__rooms">
             <div class="menu__rooms--head">
@@ -57,9 +69,20 @@
           <div class="messages--box">
             <div class="messages--header">
               <h3><i class="material-icons">group</i>talkroom</h3>
-              <div class="messages--header__right pc_none">
-                <a href="show.html"><i class="material-icons">account_circle</i></a><a href="search.html"><i class="material-icons">question_answer</i></a><a href="signup.html"><i class="material-icons">lock_outline</i></a>
-              </div>
+                <div class="messages--header__right pc_none">
+                  <div th:if="${loginUser == null}" class="entry_button">
+                   <a th:href="@{/login}"><i class="material-icons">question_answer</i></a><a th:href="@{/login}"><i class="material-icons">lock_outline</i></a>
+                  </div>
+                  <div th:if="${loginUser != null}" class="entry_button">
+                    <a href="show.html"><i class="material-icons">account_circle</i></a><a href="/login"><i class="material-icons">question_answer</i></a>
+                    <form th:action="@{/logout}" method="POST" name="logoutMobi" style="float: right; margin: 0;">
+                      <a href="javascript:logoutMobi.submit()">
+                        <i class="material-icons">lock_outline</i>
+                      </a>
+                    </form>
+                  </div>
+
+                </div>
             </div>
             <div class="messages--content">
               <div class="message">

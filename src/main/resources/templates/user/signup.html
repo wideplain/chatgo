@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" th:remove="all"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta charset="UTF-8" th:remove="all" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
   <title>Hello WebSocket</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
   <link rel="stylesheet" href="/css/normalize.min.css" />
@@ -35,28 +34,20 @@
             <h1 class="app_name">ChatGo</h1>
             <h5>このアプリケーションを利用するには、登録が必要です。</h5>
           </div>
-          <form th:action="@{/sign_up}" th:object="${userForm}" class="new_user" id="new_user" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post">
-            <div th:if="${#fields.hasAnyErrors()}" id="error_explanation">
-              <h2 th:inline="text">[[${#fields.allErrors().size()}]] errors prohibited this user from being saved:</h2>
-              <ul>
-                <li th:each="error : ${#fields.detailedErrors()}">
-                  <span th:text="${error.isGlobal()}? ${error.message} : |${error.fieldName} ${error.message}|">Error message</span>
-                </li>
-              </ul>
-            </div>
+          <form>
             <fieldset>
-              <label for="nameField">Nickname</label>
-              <input th:field="*{nickname}" placeholder="ニックネームを入力（必須）" type="text" name="nickname" id="user_nickname"/>
+              <label for="nameField">Username</label>
+              <input type="text" placeholder="username" id="nameField">
               <label for="nameField">Email</label>
-              <input th:field="*{email}" autofocus="autofocus" placeholder="メールアドレスを入力" type="email" value="" name="email" id="user_email" />
+              <input type="text" placeholder="example@example.com" id="nameField">
               <label for="nameField">Password</label>
-              <input th:field="*{password}" autocomplete="off" placeholder="パスワードを入力" type="password" name="password" id="user_password"/>
+              <input type="text" placeholder="パスワードを入力" id="nameField">
               <label for="nameField">Passwordの確認</label>
-              <input th:field="*{confirmPassword}" autocomplete="off" placeholder="パスワードを入力（確認）" type="password" name="confirmPassword" id="user_password_confirmation" />
-              <input class="button-primary" type="submit" value="ユーザーを作成" name="commit" />
+              <input type="text" placeholder="パスワードを再度入力" id="nameField">
+              <input class="button-primary" type="submit" value="Login">
             </fieldset>
           </form>
-          <a th:href="@{/login}">ログイン</a>
+          <a href="login.html">ログイン</a>
         </div>
       </div>
     </div>

@@ -34,40 +34,22 @@
             <h1 class="app_name">ルーム検索</h1>
             <h5>チャットルームの検索結果です</h5>
           </div>
-          <div class="new-group"><input class="button-small" type="button" value=" ルームの新規作成" onClick="location.href='new.html'"></div>
+          <div class="new-group"><input class="button-small" type="button" value=" ルームの新規作成" onClick="location.href='/rooms/new'" /></div>
           <div class="search-form">
-            <form>
+            <form action="/rooms/search" accept-charset="UTF-8" method="get">
               <fieldset>
-                <input class="bottom" type="text" placeholder="&#x1F50D; ルーム検索" id="roomField">
+                <input class="bottom" type="text" placeholder="&#x1F50D; ルーム検索" id="roomField" name="keyword" th:value="${keyword}" />
               </fieldset>
             </form>
           </div>
           <div class="search_result">
             <table>
               <tbody>
-                <tr>
-                  <td>Stephen Curry</td>
-                </tr>
-                <tr>
-                  <td>Klay Thompson</td>
-                </tr>
-                  <td>Stephen Curry</td>
-                </tr>
-                <tr>
-                  <td>Klay Thompson</td>
-                </tr>
-                  <td>Stephen Curry</td>
-                </tr>
-                <tr>
-                  <td>Klay Thompson</td>
-                </tr>
-                  <td>Stephen Curry</td>
-                </tr>
-                <tr>
-                  <td>Klay Thompson</td>
-                </tr>
+              <tr th:each="room : ${rooms}">
+                <td><a href="/rooms/1/" th:href="@{'/rooms/' + ${room.id}}" title="ルームネーム" th:text="${room.name}">Stephen Curry</a></td>
+              </tr>
               </tbody>
-            </table>
+              </table>
           </div>
         </div>
       </div>

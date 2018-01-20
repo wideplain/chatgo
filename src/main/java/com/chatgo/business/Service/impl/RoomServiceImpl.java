@@ -2,12 +2,15 @@ package com.chatgo.business.Service.impl;
 
 import com.chatgo.business.Service.RoomService;
 import com.chatgo.business.dto.RoomDto;
-import com.chatgo.business.entitiy.Room;
+import com.chatgo.business.entity.Room;
 import com.chatgo.business.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -23,9 +26,15 @@ public class RoomServiceImpl implements RoomService {
         roomRepository.save(room);
     }
 
+    @Override
+    public Page<Room> findAll(Pageable pageable) {
+        return roomRepository.findAll(pageable);
+    }
 
-    public RoomDto findAll(Pageable pageable){
-        return roomDto;
+
+    @Override
+    public List<Room> findAllByNameLike(String keyword) {
+            return roomRepository.findAllByNameLike("%" + keyword + "%");
     }
 
 

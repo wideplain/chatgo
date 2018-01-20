@@ -36,16 +36,16 @@
             <h1 class="app_name">ChatGo</h1>
             <h5>このアプリケーションを利用するには、ログインが必要です。</h5>
           </div>
-          <form>
+          <form th:action="@{'/login'}" action="/login" accept-charset="UTF-8" method="post">
             <fieldset>
               <label for="nameField">Email</label>
-              <input type="text" placeholder="example@example.com" id="nameField">
+              <input placeholder="example@example.com" type="email" value="" name="email" id="user_email" />
               <label for="nameField">Password</label>
-              <input type="text" placeholder="パスワードを入力" id="nameField">
-              <input class="button-primary" type="submit" value="Login">
+              <input placeholder="パスワードを入力" type="password" name="password" id="user_password" />
+              <input class="button-primary" type="submit" value="Login" name="commit" />
             </fieldset>
           </form>
-          <a href="signup.html">サインアップ</a>
+          <a th:href="@{/sign_up}">サインアップ</a>
         </div>
       </div>
     </div>

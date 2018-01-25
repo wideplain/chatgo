@@ -23,7 +23,7 @@
             <h1 class="app_name"><a class="app_name" href="index.html">ChatGo</a></h1>
           </div>
           <div class="profile--left_content__message mobile_none">
-            <div class="profile__userphoto" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div>
+            <div class="profile__userphoto" style="background-image: url(/pic/default_profile.png)"></div>
             <h2 class="profile--name">プロフィールを編集</h2>
           </div>
       </div>
@@ -34,25 +34,23 @@
           <div class="pc_none">
             <h1 class="app_name">ChatGo</h1>
             <h3>プロフィールを編集</h3>
-            <div class="profile__userphoto--right" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div>
+            <div class="profile__userphoto--right" style="background-image: url(/pic/default_profile.png)"></div>
           </div>
-          <form>
+          <form th:action="@{'/users/' + ${user.id} + '/edit'}" th:object="${user}" class="new_user" id="new_user" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post">
             <fieldset>
               <label for="file_photo" class="file_photo">
-              <input type="file" id="file_photo" style="display:none;">プロフィール画像を変更する
+              <input type="file" id="file_photo" style="display:none;" />プロフィール画像を変更する
               </label>
-              <label for="nameField">Username</label>
-              <input type="text" placeholder="username" id="nameField">
+              <label for="nameField">Nickname</label>
+              <input th:value="*{nickname}" type="text" placeholder="username" id="nameField" />
               <label for="nameField">Email</label>
-              <input type="text" placeholder="example@example.com" id="nameField">
+              <input th:value="*{email}" type="text" placeholder="example@example.com" id="emailField" />
               <label for="nameField">新しいPassword</label>
-              <input type="text" placeholder="新しいパスワード" id="nameField">
-              <label for="nameField">新しいPasswordの確認</label>
-              <input type="text" placeholder="パスワードを再度入力" id="nameField">
-              <input class="button-primary" type="submit" value="更新">
+              <input th:field="*{password}" placeholder="新しいパスワード" id="passwordField" type="password" />
+              <input class="button-primary" type="submit" value="更新" />
             </fieldset>
           </form>
-          <a href="show.html">プロフィールに戻る</a>
+          <a href="javascript:history.back()">プロフィールに戻る</a>
         </div>
       </div>
     </div>

@@ -6,4 +6,6 @@ public interface UserService {
 
     void save(User user);
 
+    User findOne(Long id);
+
 }

@@ -24,7 +24,7 @@
           </div>
           <div class="profile--left_content__message mobile_none">
             <div class="profile__userphoto" style="background-image: url(/static/pic/default_profile.png)"></div>
-            <h2 class="profile--name">Donald Trump</h2>
+            <h2 class="profile--name" th:inline="text">[[${user.nickname}]] </h2>
           </div>
       </div>
     </div>
@@ -34,13 +34,13 @@
           <div class="pc_none">
             <h1 class="app_name">ChatGo</h1>
             <div class="profile__userphoto--right" style="background-image: url(http://eiga.k-img.com/images/person/52715/300x.jpg)"></div>
-            <h2 style="text-align: center;">Donald Trump</h2>
+            <h2 style="text-align: center;" th:inline="text">[[${user.nickname}]] </h2>
           </div>
             <h3>メールアドレス</h3>
-            <p>example@example.com</p>
+            <p th:inline="text">[[${user.email}]]</p>
             <h3>最終メッセージ</h3>
             <p>こんにちは。</p>
-          <a href="edit.html">プロフィールを編集</a>
+          <a th:href="@{'/users/' + ${user.id} + '/edit/'}" >プロフィールを編集</a>
         </div>
       </div>
     </div>

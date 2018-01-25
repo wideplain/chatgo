@@ -21,8 +21,14 @@
       <div class="column column-20 menu">
         <div class="menu-include mobile_none" id="sub-menu">
           <div class="menu__header">
-            <h3>User</h3>
-            <div class="icon-menu">メニュー｜<a href="/user/profile"><i class="material-icons">account_circle</i></a><a href="/user/signup"><i class="material-icons">lock_outline</i></a></div>
+            <div th:if="${loginUser != null}" class="entry_button"><h3 th:text="${loginUser.userNickname}">User</h3></div><div th:if="${loginUser == null}" class="entry_button"><h3>ChatGo</h3></div>
+            <div class="icon-menu">メニュー｜<div th:if="${loginUser != null}" class="entry_button"><a th:href="@{'/users/' + ${loginUser.userId}}" href="/users/1"><i class="material-icons">account_circle</i></a>
+              <form th:action="@{/logout}" method="POST" name="logout" style="float: right; margin: 0;">
+                <a href="javascript:logout.submit()">
+                  <i class="material-icons">lock_outline</i>
+                </a>
+              </form>
+            </div><div th:if="${loginUser == null}" class="entry_button"><a href="/user/signup"><i class="material-icons">lock_outline</i></a></div></div>
           </div>
           <div class="menu__rooms">
             <div class="menu__rooms--head">
@@ -53,7 +59,7 @@
                    <a th:href="@{/login}"><i class="material-icons">question_answer</i></a><a th:href="@{/login}"><i class="material-icons">lock_outline</i></a>
                   </div>
                   <div th:if="${loginUser != null}" class="entry_button">
-                    <a href="show.html"><i class="material-icons">account_circle</i></a><a href="/login"><i class="material-icons">question_answer</i></a>
+                    <a th:href="@{'/users/' + ${loginUser.userId}}" href="/users/1"><i class="material-icons">account_circle</i></a><a href="/login"><i class="material-icons">question_answer</i></a>
                     <form th:action="@{/logout}" method="POST" name="logoutMobi" style="float: right; margin: 0;">
                       <a href="javascript:logoutMobi.submit()">
                         <i class="material-icons">lock_outline</i>

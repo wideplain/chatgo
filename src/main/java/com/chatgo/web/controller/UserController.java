@@ -1,6 +1,7 @@
 package com.chatgo.web.controller;
 
 import com.chatgo.business.entity.User;
+import com.chatgo.business.repository.UserRepository;
 import com.chatgo.business.service.UserService;
 import com.chatgo.security.LoginUserDetails;
 import com.chatgo.web.form.UserForm;
@@ -12,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
@@ -25,6 +26,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("/login")
     public String loginForm(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         if (loginUserDetails != null) {
@@ -35,8 +39,8 @@ public class UserController {
 
     @GetMapping("/sign_up")
     public String signupForm(UserForm form,
-                             @AuthenticationPrincipal LoginUserDetails loginUserDtails) {
-        if (loginUserDtails != null) {
+                             @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+        if (loginUserDetails != null) {
             return "redirect:/";
         }
         return "user/signup";
@@ -61,4 +65,34 @@ public class UserController {
         userService.save(user);
         return "redirect:/";
     }
+
+    @GetMapping("/users/{id}")
+    public String show(@PathVariable Long id, Model model) {
+        User user = userService.findOne(id);
+        model.addAttribute("user", user);
+        return "user/show";
+    }
+
+    @GetMapping("/users/{id}/edit")
+    public ModelAndView editUser(@PathVariable("id") Long id, ModelAndView mav, Model model, UserForm form) {
+        User user = userService.findOne(id);
+        model.addAttribute("userForm", new UserForm());
+        mav.addObject("user", user);
+        mav.setViewName("user/edit");
+        return mav;
+    }
+
+    @PostMapping("/users/{id}/edit")
+    public ModelAndView updateUser(@ModelAttribute User editUser, @PathVariable("id") Long id, ModelAndView mav, @Validated UserForm form,
+                                   BindingResult result,
+                                   Model model,
+                                   @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+        User user = userService.findOne(id);
+        BeanUtils.copyProperties(editUser, user);
+        userService.save(user);
+        mav.setViewName("redirect:/");
+        return mav;
+    }
+
+
 }

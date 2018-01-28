@@ -21,7 +21,6 @@ public class UserForm implements Serializable {
     @NotBlank
     private String nickname;
 
-
     public String getEmail() {
         return email;
     }

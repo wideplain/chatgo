@@ -74,21 +74,17 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}/edit")
-    public ModelAndView editUser(@PathVariable("id") Long id, ModelAndView mav, Model model, UserForm form) {
+    public ModelAndView editUser(@PathVariable("id") Long id, ModelAndView mav, Model model, UserForm form, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         User user = userService.findOne(id);
-        model.addAttribute("userForm", new UserForm());
         mav.addObject("user", user);
         mav.setViewName("user/edit");
         return mav;
     }
 
     @PostMapping("/users/{id}/edit")
-    public ModelAndView updateUser(@ModelAttribute User editUser, @PathVariable("id") Long id, ModelAndView mav, @Validated UserForm form,
-                                   BindingResult result,
-                                   Model model,
-                                   @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+    public ModelAndView updateUser(@PathVariable("id") Long id, ModelAndView mav, @Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         User user = userService.findOne(id);
-        BeanUtils.copyProperties(editUser, user);
+        BeanUtils.copyProperties(form, user);
         userService.save(user);
         mav.setViewName("redirect:/");
         return mav;

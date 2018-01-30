@@ -42,9 +42,9 @@
               <input type="file" id="file_photo" style="display:none;" />プロフィール画像を変更する
               </label>
               <label for="nameField">Nickname</label>
-              <input th:value="*{nickname}" type="text" placeholder="username" id="nameField" />
+              <input th:value="*{nickname}" type="text" placeholder="username" id="nameField" name="nickname" />
               <label for="nameField">Email</label>
-              <input th:value="*{email}" type="text" placeholder="example@example.com" id="emailField" />
+              <input th:value="*{email}" type="text" placeholder="example@example.com" id="emailField" name="email" />
               <label for="nameField">新しいPassword</label>
               <input th:field="*{password}" placeholder="新しいパスワード" id="passwordField" type="password" />
               <input class="button-primary" type="submit" value="更新" />

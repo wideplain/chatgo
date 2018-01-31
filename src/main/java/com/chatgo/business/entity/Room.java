@@ -10,6 +10,9 @@ public class Room extends TimestampEntity {
     @OneToMany(mappedBy = "room")
     private List<Message> messages;
 
+    @ManyToMany
+    private List<User> users;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -31,5 +34,21 @@ public class Room extends TimestampEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 }

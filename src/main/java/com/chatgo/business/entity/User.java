@@ -5,6 +5,7 @@ package com.chatgo.business.entity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ public class User extends TimestampEntity {
     @OneToMany(mappedBy = "user")
     private List<Message> messages;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "users")
     private List<Room> rooms;
 
     @Id
@@ -74,4 +75,21 @@ public class User extends TimestampEntity {
     public void setProfilePhoto(String profilePhoto) {
         this.profilePhoto = profilePhoto;
     }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+
 }

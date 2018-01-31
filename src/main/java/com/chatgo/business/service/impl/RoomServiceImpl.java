@@ -1,6 +1,6 @@
-package com.chatgo.business.Service.impl;
+package com.chatgo.business.service.impl;
 
-import com.chatgo.business.Service.RoomService;
+import com.chatgo.business.service.RoomService;
 import com.chatgo.business.dto.RoomDto;
 import com.chatgo.business.entity.Room;
 import com.chatgo.business.repository.RoomRepository;
@@ -20,6 +20,11 @@ public class RoomServiceImpl implements RoomService {
     private RoomRepository roomRepository;
 
     private RoomDto roomDto;
+
+    @Override
+    public Room findOne(Long id){
+        return roomRepository.findOne(id);
+    }
 
     @Override
     public void save(Room room) {

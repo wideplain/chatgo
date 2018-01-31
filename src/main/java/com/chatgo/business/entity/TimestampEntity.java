@@ -10,10 +10,10 @@ import java.sql.Timestamp;
 @MappedSuperclass
 public abstract class TimestampEntity {
 
-    public Timestamp updatedAt;
+    private Timestamp updatedAt;
 
     @Column(updatable=false)
-    public Timestamp createdAt;
+    private Timestamp createdAt;
 
     @PrePersist
     public void prePersist() {
@@ -26,5 +26,6 @@ public abstract class TimestampEntity {
     public void preUpdate() {
         this.updatedAt = new Timestamp((new Date()).getTime());
     }
+
 
 }

@@ -1,6 +1,6 @@
 package com.chatgo.web.controller;
 
-import com.chatgo.business.Service.RoomService;
+import com.chatgo.business.service.RoomService;
 import com.chatgo.business.entity.Room;
 import com.chatgo.web.form.RoomForm;
 import org.springframework.beans.BeanUtils;

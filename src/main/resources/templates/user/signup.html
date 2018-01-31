@@ -20,7 +20,7 @@
     <div class="column">
       <div class="login--left_content mobile_none">
           <div class="start_header">
-            <h1 class="app_name"><a class="app_name" href="index.html">ChatGo</a></h1>
+            <h1 class="app_name"><a class="app_name" th:href="@{/}">ChatGo</a></h1>
           </div>
           <div class="login--left_content__message mobile_none">
             <h2>サインアップ</h2>
@@ -32,7 +32,7 @@
       <div class="login--right_content">
         <div class="login_form">
           <div class="pc_none">
-            <h1 class="app_name">ChatGo</h1>
+            <h1 class="app_name"><a th:href="@{/}">ChatGo</a></h1>
             <h5>このアプリケーションを利用するには、登録が必要です。</h5>
           </div>
           <form th:action="@{/sign_up}" th:object="${userForm}" class="new_user" id="new_user" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post">
@@ -45,6 +45,9 @@
               </ul>
             </div>
             <fieldset>
+              <label for="file_photo" class="file_photo">
+                <input type="file" name="file" style="display:none;" id="file_photo" />プロフィール画像を設定する
+              </label>
               <label for="nameField">Nickname</label>
               <input th:field="*{nickname}" placeholder="ニックネームを入力（必須）" type="text" name="nickname" id="user_nickname"/>
               <label for="nameField">Email</label>
@@ -54,6 +57,7 @@
               <label for="nameField">Passwordの確認</label>
               <input th:field="*{confirmPassword}" autocomplete="off" placeholder="パスワードを入力（確認）" type="password" name="confirmPassword" id="user_password_confirmation" />
               <input class="button-primary" type="submit" value="ユーザーを作成" name="commit" />
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             </fieldset>
           </form>
           <a th:href="@{/login}">ログイン</a>

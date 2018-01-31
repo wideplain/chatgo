@@ -16,6 +16,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
+
 @Controller
 public class UserController {
 
@@ -50,7 +52,7 @@ public class UserController {
     public String register(@Validated UserForm form,
                            BindingResult result,
                            Model model,
-                           @AuthenticationPrincipal LoginUserDetails loginUserDetails){
+                           @AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException{
         if (loginUserDetails != null) {
             return "redirect:/";
         }
@@ -62,7 +64,7 @@ public class UserController {
         }
         User user = new User();
         BeanUtils.copyProperties(form, user);
-        userService.save(user);
+        userService.save(user, form.getFile());
         return "redirect:/";
     }
 
@@ -82,13 +84,20 @@ public class UserController {
     }
 
     @PostMapping("/users/{id}/edit")
-    public ModelAndView updateUser(@PathVariable("id") Long id, ModelAndView mav, @Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+    public ModelAndView updateUser(@PathVariable("id") Long id, ModelAndView mav, @Validated UserForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException {
         User user = userService.findOne(id);
         BeanUtils.copyProperties(form, user);
-        userService.save(user);
+        userService.save(user, form.getFile());
         mav.setViewName("redirect:/");
         return mav;
     }
+
+    @GetMapping("/users/{id}/profile-photo.jpg")
+    @ResponseBody
+    public byte[] downloadProfilePhoto(@PathVariable Long id) throws IOException {
+        return userService.downloadProfilePhoto(id);
+    }
+
 
 
 }

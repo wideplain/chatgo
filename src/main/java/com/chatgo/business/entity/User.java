@@ -24,6 +24,9 @@ public class User extends TimestampEntity {
     @Column(nullable = false)
     private String nickname;
 
+    @Column
+    private String profilePhoto;
+
 
     public Long getId() {
         return id;
@@ -55,5 +58,13 @@ public class User extends TimestampEntity {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 }

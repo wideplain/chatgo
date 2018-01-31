@@ -1,10 +1,14 @@
 package com.chatgo.business.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "rooms")
 public class Room extends TimestampEntity {
+
+    @OneToMany(mappedBy = "room")
+    private List<Message> messages;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

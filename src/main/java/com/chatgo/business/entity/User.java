@@ -5,11 +5,18 @@ package com.chatgo.business.entity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User extends TimestampEntity {
+
+    @OneToMany(mappedBy = "user")
+    private List<Message> messages;
+
+    @OneToMany
+    private List<Room> rooms;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,13 +1,7 @@
 package com.chatgo.business.entity;
 
-
-
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")

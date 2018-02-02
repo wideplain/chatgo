@@ -11,6 +11,9 @@ public class Room extends TimestampEntity {
     private List<Message> messages;
 
     @ManyToMany
+    @JoinTable(name = "rooms_users",
+            joinColumns = @JoinColumn(name = "room_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users;
 
     @Id
@@ -39,6 +42,7 @@ public class Room extends TimestampEntity {
     public List<User> getUsers() {
         return users;
     }
+
 
     public void setUsers(List<User> users) {
         this.users = users;

@@ -167,7 +167,7 @@ a.app_name {
 }
 
 .messages--content {
-  padding-top: 70px;
+  padding: 70px 0 30px 0;
   z-index: -100;
 }
 
@@ -175,6 +175,11 @@ a.app_name {
   overflow: scroll;
   box-sizing: border-box;
   height: calc(100vh - 50px);
+}
+
+.outer{
+  margin: 0 auto;
+  text-align: center;
 }
 
 .message {

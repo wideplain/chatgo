@@ -46,7 +46,7 @@
             <table>
               <tbody>
               <tr th:each="room : ${rooms}">
-                <td><a href="/rooms/1/" th:href="@{'/rooms/' + ${room.id}}" title="ルームネーム" th:text="${room.name}">Stephen Curry</a></td>
+                <td><a href="/rooms/1/" th:href="@{'/rooms/' + ${room.id} + '/messages/'}" title="ルームネーム" th:text="${room.name}">Stephen Curry</a></td>
               </tr>
               </tbody>
               </table>

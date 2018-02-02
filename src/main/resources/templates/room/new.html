@@ -42,27 +42,18 @@
                   <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="help-block">error!</span>
                   <div class="submit_button"><input class="button-primary" type="submit" value="作成" style="width: 100%;" /></div>
                 </div>
-                <input class="bottom" type="text" placeholder="&#x1F50D; 加入ユーザー名を検索" id="roomField" />
+                <!--<input class="bottom" type="text" placeholder="&#x1F50D; 加入ユーザー名を検索" id="roomField" />-->
+                <h3>加入ユーザーを選択</h3>
+                <ul style="list-style-type: none">
+                <li th:each="user : ${users}" >
+                <input type="checkbox" th:id ="@{'user' + ${user.id}}" th:value="${user.id}" name="user"/><label class="bottom" th:for="@{'user' + ${user.id}}" th:text="${user.getNickname()}">name1</label>
+                </li>
+                </ul>
               </fieldset>
             </form>
           </div>
           <div class="search_result">
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <input type="checkbox" id="name_checkbox1" /><label for="name_checkbox1" class="bottom">name1
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input type="checkbox" id="name_checkbox2" /><label for="name_checkbox2" class="bottom">name1
-                  </label>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import com.chatgo.business.entity.User;
 import com.chatgo.business.repository.UserRepository;
 import com.chatgo.business.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +18,8 @@ import java.nio.file.Paths;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -35,6 +39,11 @@ public class UserServiceImpl implements UserService {
             user.setProfilePhoto(uploadProfilePhoto(file, user.getId()));
         }
         return user;
+    }
+
+    @Override
+    public Page<User> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 
 

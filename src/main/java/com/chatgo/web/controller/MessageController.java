@@ -10,6 +10,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +39,11 @@ public class MessageController {
     }
 
     @GetMapping("/rooms/{roomId}/messages")
-    public String messageIndex(MessageForm form, Pageable pageable, Model model,  @PathVariable Long roomId) {
+    public String messageIndex(MessageForm form, @PageableDefault(
+            page = 0,
+            size = 100,
+            direction = Sort.Direction.ASC,
+            sort = {"createdAt"})Pageable pageable, Model model,  @PathVariable Long roomId) {
         Room room = roomService.findOne(roomId);
         Page<Room> rooms = roomService.findAll(pageable);
         model.addAttribute("room", room);
@@ -45,7 +51,7 @@ public class MessageController {
         return "chat/index";
     }
 
-    @PostMapping("/rooms/{roomId}/messages")
+    @PostMapping("/rooms/{roomId}/messages/post")
     public String createMessage(@Validated MessageForm form, BindingResult result, Pageable pageable, Model model, @PathVariable Long roomId, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         if (result.hasErrors()) {
             return messageIndex(form, pageable, model, roomId);
@@ -53,6 +59,6 @@ public class MessageController {
         Message message = new Message();
         BeanUtils.copyProperties(form, message);
         messageService.save(message, roomId, loginUserDetails.getUserId());
-        return "redirect:/";
+        return "redirect:/rooms/{roomId}/messages";
     }
 }

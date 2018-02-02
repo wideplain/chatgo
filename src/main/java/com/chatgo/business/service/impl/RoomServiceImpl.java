@@ -1,5 +1,6 @@
 package com.chatgo.business.service.impl;
 
+
 import com.chatgo.business.service.RoomService;
 import com.chatgo.business.dto.RoomDto;
 import com.chatgo.business.entity.Room;
@@ -18,6 +19,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Autowired
     private RoomRepository roomRepository;
+
 
     private RoomDto roomDto;
 

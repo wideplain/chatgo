@@ -3,7 +3,7 @@ $(function(){
         var targetTop = $('#latest').offset().top;
         $('#messages--box').animate({
             scrollTop: targetTop
-        }, 10);
+        }, 800);
         return false;
     });
 });

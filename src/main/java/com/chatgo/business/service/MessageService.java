@@ -11,6 +11,7 @@ public interface MessageService {
 
     Page<Message> findAll(Pageable pageable);
 
-    List<Message> findAllByRoomId(Long roomId);
+    List<Message> findAllByRoomId(Long roomId, Pageable pageable);
+
 
 }

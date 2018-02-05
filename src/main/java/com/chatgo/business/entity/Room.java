@@ -1,7 +1,9 @@
 package com.chatgo.business.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "rooms")
@@ -10,11 +12,8 @@ public class Room extends TimestampEntity {
     @OneToMany(mappedBy = "room")
     private List<Message> messages;
 
-    @ManyToMany
-    @JoinTable(name = "rooms_users",
-            joinColumns = @JoinColumn(name = "room_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<User> users;
+    @OneToMany(mappedBy = "room")
+    private List<RoomUser> roomUsers;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,14 +38,7 @@ public class Room extends TimestampEntity {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
 
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 
     public List<Message> getMessages() {
         return messages;
@@ -54,5 +46,14 @@ public class Room extends TimestampEntity {
 
     public void setMessages(List<Message> messages) {
         this.messages = messages;
+    }
+
+
+    public List<RoomUser> getRoomUsers() {
+        return roomUsers;
+    }
+
+    public void setRoomUsers(List<RoomUser> roomUsers) {
+        this.roomUsers = roomUsers;
     }
 }

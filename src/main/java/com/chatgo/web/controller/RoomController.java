@@ -1,8 +1,12 @@
 package com.chatgo.web.controller;
 
+import com.chatgo.business.entity.RoomUser;
 import com.chatgo.business.entity.User;
+import com.chatgo.business.repository.RoomUserRepository;
+import com.chatgo.business.service.MessageService;
 import com.chatgo.business.service.RoomService;
 import com.chatgo.business.entity.Room;
+import com.chatgo.business.service.RoomUserService;
 import com.chatgo.business.service.UserService;
 import com.chatgo.web.form.RoomForm;
 import org.springframework.beans.BeanUtils;
@@ -16,7 +20,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * ルームの作成
@@ -29,6 +32,9 @@ public class RoomController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoomUserService roomUserService;
 
     @ModelAttribute
     RoomForm setUpForm() {
@@ -49,9 +55,18 @@ public class RoomController {
             return newRoom(form, model, pageable);
         }
         Room room = new Room();
+
         BeanUtils.copyProperties(form, room);
         roomService.save(room);
-        return "redirect:/rooms/{room.id}/messages";
+        Long roomId = room.getId();
+        for (int i = 0; i < form.getUserIds().size(); i++) {
+            RoomUser roomUser = new RoomUser();
+            BeanUtils.copyProperties(form, roomUser);
+            Long userId = form.getUserIds().get(i);
+            roomUserService.save(roomUser, roomId ,userId);
+        }
+
+        return "redirect:/";
     }
 
     @GetMapping("/rooms/search")

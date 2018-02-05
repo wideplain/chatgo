@@ -7,7 +7,6 @@ import com.chatgo.business.service.RoomService;
 import com.chatgo.business.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,8 +40,9 @@ public class MessageServiceImpl implements MessageService {
 
 
     @Override
-    public List<Message> findAllByRoomId(Long roomId) {
-        return messageRepository.findAllByRoomId(roomId);
+    public List<Message> findAllByRoomId(Long roomId, Pageable pageable) {
+        return messageRepository.findAllByRoomId(roomId, pageable);
     }
+
 
 }

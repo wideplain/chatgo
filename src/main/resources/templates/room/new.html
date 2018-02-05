@@ -46,7 +46,7 @@
                 <h3>加入ユーザーを選択</h3>
                 <ul style="list-style-type: none">
                 <li th:each="user : ${users}" >
-                <input type="checkbox" th:id ="@{'user' + ${user.id}}" th:value="${user.id}" name="user"/><label class="bottom" th:for="@{'user' + ${user.id}}" th:text="${user.getNickname()}">name1</label>
+                <input type="checkbox" class="user__checkbox" th:id ="@{'user' + ${user.id}}" th:value="${user.id}" name="userIds" th:feild="*{userIds}" /><label class="bottom user__label" th:for="@{'user' + ${user.id}}" th:text="${user.getNickname()}">name1</label>
                 </li>
                 </ul>
               </fieldset>

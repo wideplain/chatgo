@@ -10,8 +10,8 @@ public class User extends TimestampEntity {
     @OneToMany(mappedBy = "user")
     private List<Message> messages;
 
-    @ManyToMany(mappedBy = "users")
-    private List<Room> rooms;
+    @OneToMany(mappedBy = "user")
+    private List<RoomUser> roomUsers;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -78,12 +78,12 @@ public class User extends TimestampEntity {
         this.messages = messages;
     }
 
-    public List<Room> getRooms() {
-        return rooms;
+
+    public List<RoomUser> getRoomUsers() {
+        return roomUsers;
     }
 
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
+    public void setRoomUsers(List<RoomUser> roomUsers) {
+        this.roomUsers = roomUsers;
     }
-
 }

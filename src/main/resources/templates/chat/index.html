@@ -75,6 +75,7 @@
                         </div>
                         <div th:if="${room != null}">
                             <h3 th:text="${room.name}">トーク名</h3>
+
                         </div>
                         <div class="messages--header__right pc_none">
                             <div th:if="${loginUser == null}" class="entry_button">
@@ -94,10 +95,12 @@
                             </div>
                             <a href="#latest" style="text-align: right"><i class="material-icons">details</i></a>
                         </div>
+                        <div class="switch"><input type="checkbox" class="connect__switch" id="checkable" /><label class="connect__label" for="checkable" ></label></div>
                     </div>
+
                     <div class="messages--content" >
-                        <div th:if="${room != null}">
-                            <div class="message" th:each="message : ${room.messages}">
+
+                            <div class="message" th:each="message : ${messages}">
                             <div class="message__userphoto--container">
                                 <div th:if="${message.user.getProfilePhoto() != null}">
                                 <div class="message__userphoto"
@@ -114,32 +117,10 @@
                                     2019/01/10
                                 </div>
                                 <div class="message__text" th:text="${message.getBody()}" th:name="body"><p>Hoping today will
-                                    be the most awesome day for you.</p></div>
+                                    be the most awesome day for you.</p></div><span style="float: right" th:if="${room == null}">at <a th:href="@{'/rooms/' + ${message.room.id} +'/messages'}" th:text="${message.room.name}"></a></span>
                             </div>
                         </div>
-                    </div>
-                        <div th:if="${room == null}">
-                            <div class="message" th:each="message : ${messages}" >
-                                <div class="message__userphoto--container">
-                                    <div th:if="${message.user.getProfilePhoto() != null}">
-                                        <div class="message__userphoto"
-                                             th:style="|background-image: url(/users/${message.user.id}/profile-photo.jpg);|"></div>
-                                    </div>
-                                    <div th:if="${message.user.getProfilePhoto() == null}">
-                                        <div class="message__userphoto"
-                                             style="background-image: url(/pic/default_profile.png)"></div>
-                                    </div>
-                                </div>
-                                <div class="message--content__container">
-                                    <div class="message__username" th:text="${message.user.nickname}">username</div>
-                                    <div class="message__timestamp" th:text="${message.getCreatedAt()}" th:name="created_at">
-                                        2019/01/10
-                                    </div>
-                                    <div class="message__text" th:text="${message.getBody()}" th:name="body"><p>Hoping today will
-                                        be the most awesome day for you.</p></div><span style="float: right">at <a th:href="@{'/rooms/' + ${message.room.id} +'/messages'}" th:text="${message.room.name}"></a></span>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                     <div id="latest"></div>
                 </div>

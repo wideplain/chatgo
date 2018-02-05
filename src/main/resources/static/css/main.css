@@ -185,7 +185,6 @@ a.app_name {
 .message {
   padding: 20px 5px 5px 5px;
   clear: left;
-  position: relative;
 }
 
 .message__userphoto {
@@ -230,6 +229,44 @@ a.app_name {
   text-align:center
 }
 
+
+/* 接続スイッチ */
+
+.switch {
+  position: relative;
+  margin-left: 89%;
+  margin-top: -57px;
+}
+
+#checkable {
+  display: none;
+}
+#checkable:checked + label.connect__label {
+  background: #2EC4B6;
+}
+#checkable:checked + label.connect__label:after {
+  transform: translate(100%, 0);
+}
+
+label.connect__label[for='checkable'] {
+  display: flex;
+  width: 60px;
+  height: 30px;
+  border-radius: 75px;
+  transition: 0.15s ease-in-out;
+  background: #E71D36;
+  padding-top: -30px;
+}
+label.connect__label[for='checkable']:after {
+  content: "";
+  display: block;
+  widtH: 30px;
+  heighT: 30px;
+  border-radius: 75px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.35);
+  background: white;
+  transition: 0.15s ease-in-out;
+}
 
 .bottom {
   margin-bottom: 0;
@@ -325,60 +362,19 @@ label.file_photo:hover {
   background-color: #606c76;
 }
 
-
-/* Radio ---------------------------------------------------*/
-input[type="radio"] {
-  display: none;
-  /*checked時の見た目*/
-}
-input[type="radio"] + label {
-  display: block;
-  cursor: pointer;
-  /*通常時の見た目*/
-  /*hover時の見た目*/
-}
-input[type="radio"] + label::before {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  content: "";
-  border-radius: 10px;
-  vertical-align: middle;
-  border: 2px solid #dddddd;
-  background-color: #f0f0f0;
-  margin: 2px 5px 0 0;
-  -webkit-transition: .1s;
-  transition: .1s;
-}
-input[type="radio"] + label:hover {
-  color: #808080;
-}
-input[type="radio"] + label:hover::before {
-  background-color: #fff;
-}
-input[type="radio"]:checked + label {
-  color: #9b4dca;
-  cursor: default;
-}
-input[type="radio"]:checked + label::before {
-  border-color: #9b4dca !important;
-  background-color: #9b4dca !important;
-  box-shadow: inset 0 0 0 7px #fff;
-}
-
 /* Checkbox ------------------------------------------------*/
-input[type="checkbox"] {
+input.user__checkbox[type="checkbox"] {
   display: none;
   /*checked時の見た目*/
 }
-input[type="checkbox"] + label {
+input.user__checkbox[type="checkbox"] + label.user__label {
   display: block;
   cursor: pointer;
   margin: 0px;
   /*通常時の見た目*/
   /*hover時の見た目*/
 }
-input[type="checkbox"] + label::before {
+input.user__checkbox[type="checkbox"] + label.user__label::before {
   width: 20px;
   height: 20px;
   line-height: 10px;
@@ -399,16 +395,16 @@ input[type="checkbox"] + label::before {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-input[type="checkbox"] + label:hover {
+input.user__checkbox[type="checkbox"] + label.user__checkbox:hover {
   color: #808080;
 }
-input[type="checkbox"] + label:hover::before {
+input.user__checkbox[type="checkbox"] + label.user__label:hover::before {
   background-color: #fff;
 }
-input[type="checkbox"]:checked + label {
+input.user__checkbox[type="checkbox"]:checked + label.user__label {
   color: #9b4dca;
 }
-input[type="checkbox"]:checked + label::before {
+input.user__checkbox[type="checkbox"]:checked + label.user__label::before {
   font-size: 25px;
   background: #fff !important;
   border-color: #9b4dca !important;

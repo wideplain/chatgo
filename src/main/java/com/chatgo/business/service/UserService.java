@@ -1,5 +1,6 @@
 package com.chatgo.business.service;
 
+import com.chatgo.business.entity.RoomUser;
 import com.chatgo.business.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +20,5 @@ public interface UserService {
     Page<User> findAll(Pageable pageable);
 
     byte[] downloadProfilePhoto(Long userId) throws IOException;
-
 
 }

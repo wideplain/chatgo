@@ -95,11 +95,10 @@
                             </div>
                             <a href="#latest" style="text-align: right"><i class="material-icons">details</i></a>
                         </div>
-                        <div class="switch"><input type="checkbox" class="connect__switch" id="checkable" /><label class="connect__label" for="checkable" ></label></div>
+                        <div class="switch" th:if="${loginUser != null}" ><input type="checkbox" class="connect__switch" id="checkable" name="checkable" /><label class="connect__label" for="checkable" ></label></div>
                     </div>
 
                     <div class="messages--content" >
-
                             <div class="message" th:each="message : ${messages}">
                             <div class="message__userphoto--container">
                                 <div th:if="${message.user.getProfilePhoto() != null}">
@@ -120,7 +119,8 @@
                                     be the most awesome day for you.</p></div><span style="float: right" th:if="${room == null}">at <a th:href="@{'/rooms/' + ${message.room.id} +'/messages'}" th:text="${message.room.name}"></a></span>
                             </div>
                         </div>
-
+                        <div class="message" id="message">
+                        </div>
                     </div>
                     <div id="latest"></div>
                 </div>
@@ -129,10 +129,10 @@
                 <form th:action="${messageId}? @{'/rooms/' + ${room.id} + '/mesages/' + ${messageId}} : @{'/rooms/' + ${room.id} + '/messages/post'}" th:object="${messageForm}" accept-charset="UTF-8" action="/entry/1" method="post" class="bottom">
                     <fieldset class="bottom">
                         <div class="row message--form__layout">
-                            <div class="column"><input  th:field="*{body}" type="text" name="body" placeholder="メッセージを入力" id="nameField"
+                            <div class="column"><input th:field="*{body}" type="text" name="body" placeholder="メッセージを入力" id="bodyField"
                                                        class="bottom"/></div>
                             <div class="mobile_none">
-                                <div class="submit_button"><input class="button-primary bottom" type="submit"
+                                <div class="submit_button"><input id="send" class="button-primary bottom" type="submit"
                                                                   value="送信"/></div>
                             </div>
                         </div>

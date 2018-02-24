@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface MessageService {
-    void save(Message message, Long roomId, Long userId);
+    void save(Message message, Long userId, Long roomId);
 
     Page<Message> findAll(Pageable pageable);
 

@@ -27,11 +27,12 @@ public class MessageServiceImpl implements MessageService {
     private UserService userService;
 
     @Override
-    public void save(Message message , Long roomId, Long userId) {
-        message.setRoom(roomService.findOne(roomId));
+    public void save(Message message, Long userId, Long roomId) {
         message.setUser(userService.findOne(userId));
+        message.setRoom(roomService.findOne(roomId));
         messageRepository.save(message);
     }
+
 
     @Override
     public Page<Message> findAll(Pageable pageable) {

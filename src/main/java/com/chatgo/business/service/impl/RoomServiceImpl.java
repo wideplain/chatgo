@@ -40,7 +40,6 @@ public class RoomServiceImpl implements RoomService {
         return roomRepository.findOne(id);
     }
 
-
     @Override
     public void save(Room room) {
         roomRepository.save(room);

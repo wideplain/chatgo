@@ -3,7 +3,7 @@ $(function(){
         var targetTop = $('#latest').offset().top;
         $('#messages--box').animate({
             scrollTop: targetTop
-        }, 800);
+        }, 100);
         console.log('scroll done!!!!');
         return false;
     });
@@ -15,22 +15,22 @@ function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-        $("#conversation").show();
+        document.getElementById("checkable").checked = true;
     }
     else {
-        $("#conversation").hide();
+        document.getElementById("checkable").checked = false;
     }
     $("#greetings").html("");
 }
 
 function connect() {
-    var socket = new SockJS('/gs-guide-websocket');
+    var socket = new SockJS('/chat-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe(location.pathname, function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+        stompClient.subscribe(location.pathname, function (messageOutput) {
+            showMessage(JSON.parse(messageOutput.body));
         });
     });
 }
@@ -43,18 +43,18 @@ function disconnect() {
     console.log("Disconnected");
 }
 //
-function sendName() {
+function sendMessage() {
     stompClient.send(location.pathname + "/post", {}, JSON.stringify({'body': $("#bodyField").val()}));
 }
 //
-function showGreeting(socketMessage) {
+function showMessage(messageOutput) {
     $("#message").append(
         '<div class="message__userphoto--container">'+
-        '<div class="message__userphoto"></div>' +
+        '<div class="message__userphoto" style="background-image: url(/users/' + messageOutput.userId + '/profile-photo.jpg); "></div>' +
         '<div class="message--content__container">' +
-        '<div class="message__username">' + username + '</div>' +
-        '<div class="message__timestamp">' + timestamp + '</div>' +
-        '<div class="message__text"><p>' + socketMessage + '</p></div></div>'
+        '<div class="message__username">' + messageOutput.username + '</div>' +
+        '<div class="message__timestamp">' + messageOutput.createdAt + '</div>' +
+        '<div class="message__text"><p>' + messageOutput.message + '</p></div></div>'
     );
 }
 
@@ -62,7 +62,7 @@ $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
-    $( "#send" ).click(function() { sendName(); });
+    $( "#send" ).click(function() { sendMessage(); });
 });
 
 
@@ -75,4 +75,6 @@ $(function () {
             $(function() { disconnect(); });
         }
     });
+
+    $(function() { connect(); });
 });

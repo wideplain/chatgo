@@ -4,42 +4,39 @@ import java.sql.Timestamp;
 
 public class SocketMessage {
 
-    private  String socketMessage;
 
-    private Message message;
+    private String message;
+
+    private String username;
+
+    private String createdAt;
 
     private Long userId;
 
-    private Long roomId;
+    public SocketMessage() {
 
-
-    public SocketMessage(String socketMessage) {
-        this.socketMessage = socketMessage;
     }
 
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
+    public SocketMessage(String message, String username, String createdAt, Long userId) {
+        this.message = message;
+        this.username = username;
+        this.createdAt = createdAt;
         this.userId = userId;
     }
 
-
-    public Long getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
-    }
-
-    public Message getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(Message message) {
-        this.message = message;
+    public String getUsername() {
+        return username;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 }

@@ -126,11 +126,11 @@
                 </div>
             </div>
             <div class="message--form" th:if="${room != null}">
-                <form th:action="${messageId}? @{'/rooms/' + ${room.id} + '/mesages/' + ${messageId}} : @{'/rooms/' + ${room.id} + '/messages/post'}" th:object="${messageForm}" accept-charset="UTF-8" action="/entry/1" method="post" class="bottom">
+                <form th:action="${messageId}? @{'/rooms/' + ${room.id} + '/mesages/' + ${messageId}} : @{'/rooms/' + ${room.id} + '/messages/save'}" th:object="${messageForm}" accept-charset="UTF-8" action="/entry/1" method="post" class="bottom">
                     <fieldset class="bottom">
                         <div class="row message--form__layout">
                             <div class="column"><input th:field="*{body}" type="text" name="body" placeholder="メッセージを入力" id="bodyField"
-                                                       class="bottom"/></div>
+                                                       class="bottom"/><input type="hidden" name="roomId" th:field="${roomId}" th:value="${room.id}"/></div>
                             <div class="mobile_none">
                                 <div class="submit_button"><input id="send" class="button-primary bottom" type="submit"
                                                                   value="送信"/></div>

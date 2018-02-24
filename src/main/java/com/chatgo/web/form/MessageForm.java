@@ -1,13 +1,12 @@
 package com.chatgo.web.form;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class MessageForm {
 
-    @NotNull
-    @Size(min = 1, max = 300)
+
     private String body;
+
+    private Long roomId;
 
     public String getBody() {
         return body;
@@ -15,5 +14,13 @@ public class MessageForm {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 }

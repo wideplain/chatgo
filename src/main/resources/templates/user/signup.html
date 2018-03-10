@@ -57,7 +57,7 @@
               <label for="nameField">Passwordの確認</label>
               <input th:field="*{confirmPassword}" autocomplete="off" placeholder="パスワードを入力（確認）" type="password" name="confirmPassword" id="user_password_confirmation" />
               <input class="button-primary" type="submit" value="ユーザーを作成" name="commit" />
-              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
             </fieldset>
           </form>
           <a th:href="@{/login}">ログイン</a>

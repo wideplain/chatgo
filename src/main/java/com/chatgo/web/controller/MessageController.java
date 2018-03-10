@@ -1,5 +1,6 @@
 package com.chatgo.web.controller;
 
+import com.chatgo.business.dto.RoomDto;
 import com.chatgo.business.entity.Message;
 import com.chatgo.business.entity.SocketMessage;
 import com.chatgo.business.entity.User;
@@ -49,7 +50,7 @@ public class MessageController {
     }
 
     @GetMapping("/rooms/{roomId}/messages")
-    public String messageIndex (MessageForm form, @PageableDefault(
+    public String messageIndex (@PageableDefault(
             size = 100,
             direction = Sort.Direction.ASC,
             sort = {"createdAt"})Pageable pageable, Model model, @PathVariable Long roomId,  @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
@@ -66,11 +67,12 @@ public class MessageController {
 
     @MessageMapping("/{roomId}/messages/post")
     @SendTo("/rooms/{roomId}/messages")
-    public SocketMessage createMessage(@Validated MessageForm form, @AuthenticationPrincipal LoginUserDetails loginUserDetails, @PathVariable("roomId") Long roomId) {
-        Message newMessage = new Message();
-        BeanUtils.copyProperties(form, newMessage);
-        messageService.save(newMessage,loginUserDetails.getUserId(), roomId);
-        return new SocketMessage(form.getBody(), loginUserDetails.getUserNickname(), "a", loginUserDetails.getUserId());
+    public SocketMessage createMessage(@PathVariable RoomDto roomMessage, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+        System.out.println(roomMessage.toString());
+        Message message = new Message();
+        BeanUtils.copyProperties(roomMessage, message);
+        messageService.save(message,loginUserDetails.getUserId(), roomMessage.getRoomId());
+        return new SocketMessage(message.getBody(), loginUserDetails.getUserNickname(), message.getCreatedAt().toString(), loginUserDetails.getUserId());
     }
 
 }

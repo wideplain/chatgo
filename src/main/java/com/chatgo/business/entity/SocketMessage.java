@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class SocketMessage {
 
 
-    private String message;
+    private String body;
 
     private String username;
 
@@ -17,15 +17,15 @@ public class SocketMessage {
 
     }
 
-    public SocketMessage(String message, String username, String createdAt, Long userId) {
-        this.message = message;
+    public SocketMessage(String body, String username, String createdAt, Long userId) {
+        this.body = body;
         this.username = username;
         this.createdAt = createdAt;
         this.userId = userId;
     }
 
-    public String getMessage() {
-        return message;
+    public String getBody() {
+        return body;
     }
 
     public String getUsername() {

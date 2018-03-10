@@ -28,8 +28,8 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public void save(Message message, Long userId, Long roomId) {
-        message.setUser(userService.findOne(userId));
         message.setRoom(roomService.findOne(roomId));
+        message.setUser(userService.findOne(userId));
         messageRepository.save(message);
     }
 

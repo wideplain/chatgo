@@ -29,8 +29,8 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe(location.pathname, function (messageOutput) {
-            showMessage(JSON.parse(messageOutput.body));
+        stompClient.subscribe(location.pathname, function (message) {
+            showMessage(JSON.parse(message["body"]));
         });
     });
 }
@@ -44,17 +44,17 @@ function disconnect() {
 }
 //
 function sendMessage() {
-    stompClient.send(location.pathname + "/post", {}, JSON.stringify({'body': $("#bodyField").val()}));
+    stompClient.send(location.pathname + "/post", {}, JSON.stringify({'body': $("#bodyField").val(), 'roomId': parseInt($("#roomId").val())}));
 }
 //
-function showMessage(messageOutput) {
+function showMessage(message) {
     $("#message").append(
         '<div class="message__userphoto--container">'+
-        '<div class="message__userphoto" style="background-image: url(/users/' + messageOutput.userId + '/profile-photo.jpg); "></div>' +
+        '<div class="message__userphoto" style="background-image: url(/users/' + message.userId + '/profile-photo.jpg); "></div>' +
         '<div class="message--content__container">' +
-        '<div class="message__username">' + messageOutput.username + '</div>' +
-        '<div class="message__timestamp">' + messageOutput.createdAt + '</div>' +
-        '<div class="message__text"><p>' + messageOutput.message + '</p></div></div>'
+        '<div class="message__username">' + message.username + '</div>' +
+        '<div class="message__timestamp">' + message.createdAt + '</div>' +
+        '<div class="message__text"><p>' + message.body + '</p></div></div>'
     );
 }
 

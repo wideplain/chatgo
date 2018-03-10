@@ -1,10 +1,19 @@
 package com.chatgo.business.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "rooms")
 public class Room extends TimestampEntity {
+
+    @OneToMany(mappedBy = "room")
+    private List<Message> messages;
+
+    @OneToMany(mappedBy = "room")
+    private List<RoomUser> roomUsers;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,10 +21,6 @@ public class Room extends TimestampEntity {
 
     private String name;
 
-    @Column(updatable=false)
-    private Long createdBy;
-
-    private Long updatedBy;
 
     public Long getId() {
         return id;
@@ -33,19 +38,22 @@ public class Room extends TimestampEntity {
         this.name = name;
     }
 
-    public Long getCreatedBy() {
-        return createdBy;
+
+
+    public List<Message> getMessages() {
+        return messages;
     }
 
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 
-    public Long getUpdatedBy() {
-        return updatedBy;
+
+    public List<RoomUser> getRoomUsers() {
+        return roomUsers;
     }
 
-    public void setUpdatedBy(Long updatedBy) {
-        this.updatedBy = updatedBy;
+    public void setRoomUsers(List<RoomUser> roomUsers) {
+        this.roomUsers = roomUsers;
     }
 }

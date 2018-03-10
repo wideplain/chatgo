@@ -1,15 +1,17 @@
 package com.chatgo.business.entity;
 
-
-
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User extends TimestampEntity {
+
+    @OneToMany(mappedBy = "user")
+    private List<Message> messages;
+
+    @OneToMany(mappedBy = "user")
+    private List<RoomUser> roomUsers;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,6 +25,9 @@ public class User extends TimestampEntity {
 
     @Column(nullable = false)
     private String nickname;
+
+    @Column
+    private String profilePhoto;
 
 
     public Long getId() {
@@ -55,5 +60,30 @@ public class User extends TimestampEntity {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+
+    public List<RoomUser> getRoomUsers() {
+        return roomUsers;
+    }
+
+    public void setRoomUsers(List<RoomUser> roomUsers) {
+        this.roomUsers = roomUsers;
     }
 }

@@ -68,7 +68,6 @@ public class MessageController {
     @MessageMapping("/{roomId}/messages/post")
     @SendTo("/rooms/{roomId}/messages")
     public SocketMessage createMessage(@PathVariable RoomDto roomMessage, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
-        System.out.println(roomMessage.toString());
         Message message = new Message();
         BeanUtils.copyProperties(roomMessage, message);
         messageService.save(message,loginUserDetails.getUserId(), roomMessage.getRoomId());
